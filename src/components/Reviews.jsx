@@ -1,278 +1,113 @@
-// import React, { useState, useEffect } from 'react';
-// import { motion, AnimatePresence } from 'framer-motion';
-// import { Star, ChevronLeft, ChevronRight, Quote, MapPin } from 'lucide-react';
-
-// const Reviews = () => {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [reviews, setReviews] = useState([]);
-//   const [averageRating, setAverageRating] = useState(4.8);
-
-//   // Mock reviews data (replace with Google API integration)
-//   const mockReviews = [
-//     {
-//       id: 1,
-//       author: "Sarah M.",
-//       rating: 5,
-//       text: "Best coffee in London! The atmosphere is cozy and the staff are incredibly friendly. Their croissants are to die for!",
-//       date: "2 weeks ago",
-//       photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&auto=format&fit=crop"
-//     },
-//     {
-//       id: 2,
-//       author: "James L.",
-//       rating: 5,
-//       text: "Found this hidden gem while exploring the area. The flat white was perfection. Will definitely be back!",
-//       date: "1 month ago",
-//       photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop"
-//     },
-//     {
-//       id: 3,
-//       author: "Emma R.",
-//       rating: 4,
-//       text: "Love the pet-friendly policy! My dog gets so excited when we visit. Great coffee and wonderful service.",
-//       date: "3 weeks ago",
-//       photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop"
-//     },
-//     {
-//       id: 4,
-//       author: "David K.",
-//       rating: 5,
-//       text: "The attention to detail here is impressive. From the latte art to the music selection, everything is perfect.",
-//       date: "2 days ago",
-//       photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop"
-//     }
-//   ];
-
-//   useEffect(() => {
-//     // In production, replace with Google Places API call
-//     // Example API call:
-//     /*
-//     const fetchReviews = async () => {
-//       const response = await fetch(
-//         `https://maps.googleapis.com/maps/api/place/details/json?place_id=YOUR_PLACE_ID&key=YOUR_API_KEY`
-//       );
-//       const data = await response.json();
-//       setReviews(data.result.reviews);
-//       setAverageRating(data.result.rating);
-//     };
-//     fetchReviews();
-//     */
-    
-//     setReviews(mockReviews);
-//   }, []);
-
-//   const nextReview = () => {
-//     setCurrentIndex((prev) => (prev + 1) % reviews.length);
-//   };
-
-//   const prevReview = () => {
-//     setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
-//   };
-
-//   const renderStars = (rating) => {
-//     return [...Array(5)].map((_, i) => (
-//       <Star
-//         key={i}
-//         className={`${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
-//         size={20}
-//       />
-//     ));
-//   };
-
-//   return (
-//     <section id="reviews" className="py-20 px-4 bg-accent/10">
-//       <div className="max-w-7xl mx-auto">
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true }}
-//           className="text-center mb-16"
-//         >
-//           <h2 className="text-4xl md:text-5xl font-serif font-bold text-dark mb-4">
-//             What Our Customers Say
-//           </h2>
-//           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-//             Don't just take our word for it - hear from our happy customers
-//           </p>
-//         </motion.div>
-
-//         {/* Rating Summary */}
-//         <motion.div
-//           initial={{ opacity: 0, scale: 0.9 }}
-//           whileInView={{ opacity: 1, scale: 1 }}
-//           viewport={{ once: true }}
-//           className="max-w-md mx-auto mb-12"
-//         >
-//           <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-//             <div className="flex justify-center items-center gap-2 mb-4">
-//               {renderStars(Math.floor(averageRating))}
-//             </div>
-//             <div className="text-5xl font-bold text-dark mb-2">{averageRating}</div>
-//             <div className="text-gray-600 mb-4">out of 5 stars</div>
-//             <div className="text-sm text-gray-500 mb-6">Based on {reviews.length} reviews</div>
-//             <a
-//               href="https://g.page/r/Cg.../review" // Replace with your Google Maps review link
-//               target="_blank"
-//               rel="noopener noreferrer"
-//               className="inline-flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-light transition-colors"
-//             >
-//               <MapPin size={16} />
-//               Leave a Review on Google
-//             </a>
-//           </div>
-//         </motion.div>
-
-//         {/* Reviews Carousel */}
-//         <div className="relative max-w-4xl mx-auto">
-//           <AnimatePresence mode="wait">
-//             <motion.div
-//               key={currentIndex}
-//               initial={{ opacity: 0, x: 100 }}
-//               animate={{ opacity: 1, x: 0 }}
-//               exit={{ opacity: 0, x: -100 }}
-//               className="bg-white rounded-3xl shadow-xl p-8 md:p-12"
-//             >
-//               <Quote className="text-primary/20 mb-6" size={48} />
-              
-//               <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-//                 <img
-//                   src={reviews[currentIndex]?.photo}
-//                   alt={reviews[currentIndex]?.author}
-//                   className="w-20 h-20 rounded-full object-cover"
-//                 />
-                
-//                 <div className="flex-1">
-//                   <div className="flex items-center gap-4 mb-4">
-//                     <div className="flex">{renderStars(reviews[currentIndex]?.rating)}</div>
-//                     <span className="text-gray-500 text-sm">{reviews[currentIndex]?.date}</span>
-//                   </div>
-                  
-//                   <p className="text-lg text-gray-700 mb-4 italic">
-//                     "{reviews[currentIndex]?.text}"
-//                   </p>
-                  
-//                   <div className="font-semibold text-dark">
-//                     - {reviews[currentIndex]?.author}
-//                   </div>
-//                 </div>
-//               </div>
-//             </motion.div>
-//           </AnimatePresence>
-
-//           {/* Navigation Buttons */}
-//           <div className="flex justify-center gap-4 mt-8">
-//             <motion.button
-//               onClick={prevReview}
-//               className="bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors"
-//               whileHover={{ scale: 1.1 }}
-//               whileTap={{ scale: 0.9 }}
-//             >
-//               <ChevronLeft className="text-dark" size={24} />
-//             </motion.button>
-            
-//             <div className="flex items-center gap-2">
-//               {reviews.map((_, index) => (
-//                 <button
-//                   key={index}
-//                   onClick={() => setCurrentIndex(index)}
-//                   className={`w-2 h-2 rounded-full transition-all ${
-//                     index === currentIndex ? 'bg-primary w-8' : 'bg-gray-300'
-//                   }`}
-//                 />
-//               ))}
-//             </div>
-            
-//             <motion.button
-//               onClick={nextReview}
-//               className="bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors"
-//               whileHover={{ scale: 1.1 }}
-//               whileTap={{ scale: 0.9 }}
-//             >
-//               <ChevronRight className="text-dark" size={24} />
-//             </motion.button>
-//           </div>
-//         </div>
-
-//         {/* Google Map Embed */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true }}
-//           className="mt-16"
-//         >
-//           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-//             <div className="p-6">
-//               <h3 className="text-xl font-semibold text-dark mb-4">Find Us</h3>
-//               <div className="aspect-video rounded-lg overflow-hidden">
-//                 {/* Replace with actual Google Maps embed code */}
-//                 <iframe
-//                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.680380057633!2d-0.02769198422999524!3d51.507822279634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487602b6c8e1f4b1%3A0x9e4e5a8c2d8e5b0!2sLondon!5e0!3m2!1sen!2suk!4v1629990000000!5m2!1sen!2suk"
-//                   width="100%"
-//                   height="100%"
-//                   style={{ border: 0 }}
-//                   allowFullScreen=""
-//                   loading="lazy"
-//                   title="Coffee Shop Location"
-//                 />
-//               </div>
-//             </div>
-//           </div>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Reviews;
-
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote, MapPin, ExternalLink, Calendar, Users } from 'lucide-react';
+
+// Mock reviews data (used as a fallback)
+const mockReviews = [
+  {
+    id: 1,
+    author: 'Sarah M.',
+    rating: 5,
+    text: 'Best coffee in London! The atmosphere is cozy and the staff are incredibly friendly. Their croissants are to die for!',
+    date: '2 weeks ago',
+    photo: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 2,
+    author: 'James L.',
+    rating: 5,
+    text: 'Found this hidden gem while exploring the area. The flat white was perfection. Will definitely be back!',
+    date: '1 month ago',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 3,
+    author: 'Emma R.',
+    rating: 4,
+    text: 'Love the pet-friendly policy! My dog gets so excited when we visit. Great coffee and wonderful service.',
+    date: '3 weeks ago',
+    photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 4,
+    author: 'David K.',
+    rating: 5,
+    text: 'The attention to detail here is impressive. From the latte art to the music selection, everything is perfect.',
+    date: '2 days ago',
+    photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80'
+  }
+];
 
 const Reviews = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [averageRating, setAverageRating] = useState(4.8);
 
-  // Mock reviews data
-  const mockReviews = [
-    {
-      id: 1,
-      author: "Sarah M.",
-      rating: 5,
-      text: "Best coffee in London! The atmosphere is cozy and the staff are incredibly friendly. Their croissants are to die for!",
-      date: "2 weeks ago",
-      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&auto=format&fit=crop&q=80"
-    },
-    {
-      id: 2,
-      author: "James L.",
-      rating: 5,
-      text: "Found this hidden gem while exploring the area. The flat white was perfection. Will definitely be back!",
-      date: "1 month ago",
-      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80"
-    },
-    {
-      id: 3,
-      author: "Emma R.",
-      rating: 4,
-      text: "Love the pet-friendly policy! My dog gets so excited when we visit. Great coffee and wonderful service.",
-      date: "3 weeks ago",
-      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&auto=format&fit=crop&q=80"
-    },
-    {
-      id: 4,
-      author: "David K.",
-      rating: 5,
-      text: "The attention to detail here is impressive. From the latte art to the music selection, everything is perfect.",
-      date: "2 days ago",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80"
-    }
-  ];
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setReviews(mockReviews);
+    // Try to load reviews from Google Places if env is configured, otherwise use mock
+    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+    const placeId = import.meta.env.VITE_GOOGLE_PLACE_ID;
+
+    if (apiKey && placeId) {
+      const loadGoogleMaps = (key) => {
+        return new Promise((resolve, reject) => {
+          if (window.google && window.google.maps && window.google.maps.places) return resolve();
+          const existing = document.querySelector('script[data-google-maps]');
+          if (existing) {
+            existing.addEventListener('load', () => resolve());
+            existing.addEventListener('error', () => reject(new Error('Google Maps script failed')));
+            return;
+          }
+
+          const script = document.createElement('script');
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=places`;
+          script.async = true;
+          script.defer = true;
+          script.setAttribute('data-google-maps', 'true');
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error('Google Maps script failed to load'));
+          document.head.appendChild(script);
+        });
+      };
+
+      loadGoogleMaps(apiKey)
+        .then(() => {
+          try {
+            const service = new window.google.maps.places.PlacesService(document.createElement('div'));
+            service.getDetails({ placeId, fields: ['review', 'rating', 'user_ratings_total', 'url'] }, (place, status) => {
+              if (status === window.google.maps.places.PlacesServiceStatus.OK && place) {
+                const mapped = (place.reviews || []).map((r, idx) => ({
+                  id: r.author_name ? `${r.author_name}-${idx}` : idx,
+                  author: r.author_name || 'Anonymous',
+                  rating: r.rating || 0,
+                  text: r.text || '',
+                  // Convert epoch seconds to relative date string (simple fallback)
+                  date: r.time ? new Date(r.time * 1000).toLocaleDateString() : '',
+                  photo: r.profile_photo_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}`
+                }));
+
+                setReviews(mapped.length ? mapped : mockReviews);
+                setAverageRating(place.rating || (mapped.reduce((s, r) => s + r.rating, 0) / Math.max(1, mapped.length)));
+              } else {
+                // Fallback to mock on any failure
+                console.warn('Google Places details fetch failed, falling back to mock reviews', status);
+                setReviews(mockReviews);
+              }
+            });
+          } catch (err) {
+            console.error('Error using Google Places service, using mock reviews', err);
+            setReviews(mockReviews);
+          }
+        })
+        .catch((err) => {
+          console.error('Failed to load Google Maps script, using mock reviews', err);
+          Promise.resolve().then(() => setReviews(mockReviews));
+        });
+    } else {
+      // schedule setState to avoid synchronous setState inside effect
+      Promise.resolve().then(() => setReviews(mockReviews));
+    }
   }, []);
 
   const nextReview = () => {
