@@ -83,9 +83,9 @@ const Menu = () => {
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-white text-lg font-semibold">{item.price}</span>
-                      <button className="bg-primary text-white px-4 py-1 rounded-full text-sm hover:bg-primary-light transition-colors">
+                      {/* <button className="bg-primary text-white px-4 py-1 rounded-full text-sm hover:bg-primary-light transition-colors">
                         Add to Order
-                      </button>
+                      </button> */}
                     </div>
                   </motion.div>
                 </div>

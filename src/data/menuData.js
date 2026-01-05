@@ -29,7 +29,7 @@ export const menuItems = [
     description: "Freshly baked, buttery French croissant",
     price: "£3.20",
     category: "pastries",
-    image: "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?w=800&auto=format&fit=crop"
+    image: "https://cdn.britannica.com/65/235965-050-A5D740E2/Croissants-jar-of-jam.jpg"
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const menuItems = [
     description: "Rich, fudgy homemade brownie",
     price: "£3.80",
     category: "pastries",
-    image: "https://images.unsplash.com/photo-1564355808539-22fda35c7d0d?w=800&auto=format&fit=crop"
+    image: "https://www.recipetineats.com/tachyon/2020/03/Brownies_0-SQ.jpg?resize=500%2C500"
   },
   {
     id: 6,
@@ -61,7 +61,7 @@ export const menuItems = [
     description: "Vodka, fresh espresso, coffee liqueur",
     price: "£11.50",
     category: "cocktails",
-    image: "https://images.unsplash.com/photo-1551024709-8f23b1f4866b?w=800&auto=format&fit=crop"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcSUsGu-rIeNVZNuqmGmD9-uly-XdzVSpSZw&s"
   }
 ];
 

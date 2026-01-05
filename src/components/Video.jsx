@@ -74,7 +74,7 @@ const Video = () => {
           </motion.div>
 
           {/* Video Description */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -100,7 +100,7 @@ const Video = () => {
                 🌱 Sustainable
               </span>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Additional Video Thumbnails */}
