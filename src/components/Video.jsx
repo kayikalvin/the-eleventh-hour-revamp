@@ -138,11 +138,11 @@ const Video = () => {
                       {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
                     </motion.button>
                   </div>
-                  <div className="text-white text-sm pointer-events-auto">
+                  {/* <div className="text-white text-sm pointer-events-auto">
                     <span className="bg-black/50 px-3 py-1 rounded-full">
                       Tour Video - 2:45
                     </span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
