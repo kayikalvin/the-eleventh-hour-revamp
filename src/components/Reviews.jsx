@@ -10,7 +10,7 @@ const mockReviews = [
     rating: 5,
     text: 'Best coffee in London! The atmosphere is cozy and the staff are incredibly friendly. Their croissants are to die for!',
     date: '2 weeks ago',
-    photo: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&auto=format&fit=crop&q=80'
+    photo: 'data:image/jpeg;base64,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'
   },
   {
     id: 2,
@@ -43,71 +43,9 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [averageRating, setAverageRating] = useState(4.8);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // Commented out Google Places API integration for now, using mock data
   useEffect(() => {
-    // Try to load reviews from Google Places if env is configured, otherwise use mock
-    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
-    const placeId = import.meta.env.VITE_GOOGLE_PLACE_ID;
-
-    if (apiKey && placeId) {
-      const loadGoogleMaps = (key) => {
-        return new Promise((resolve, reject) => {
-          if (window.google && window.google.maps && window.google.maps.places) return resolve();
-          const existing = document.querySelector('script[data-google-maps]');
-          if (existing) {
-            existing.addEventListener('load', () => resolve());
-            existing.addEventListener('error', () => reject(new Error('Google Maps script failed')));
-            return;
-          }
-
-          const script = document.createElement('script');
-          script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=places`;
-          script.async = true;
-          script.defer = true;
-          script.setAttribute('data-google-maps', 'true');
-          script.onload = () => resolve();
-          script.onerror = () => reject(new Error('Google Maps script failed to load'));
-          document.head.appendChild(script);
-        });
-      };
-
-      loadGoogleMaps(apiKey)
-        .then(() => {
-          try {
-            const service = new window.google.maps.places.PlacesService(document.createElement('div'));
-            service.getDetails({ placeId, fields: ['review', 'rating', 'user_ratings_total', 'url'] }, (place, status) => {
-              if (status === window.google.maps.places.PlacesServiceStatus.OK && place) {
-                const mapped = (place.reviews || []).map((r, idx) => ({
-                  id: r.author_name ? `${r.author_name}-${idx}` : idx,
-                  author: r.author_name || 'Anonymous',
-                  rating: r.rating || 0,
-                  text: r.text || '',
-                  // Convert epoch seconds to relative date string (simple fallback)
-                  date: r.time ? new Date(r.time * 1000).toLocaleDateString() : '',
-                  photo: r.profile_photo_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}`
-                }));
-
-                setReviews(mapped.length ? mapped : mockReviews);
-                setAverageRating(place.rating || (mapped.reduce((s, r) => s + r.rating, 0) / Math.max(1, mapped.length)));
-              } else {
-                // Fallback to mock on any failure
-                console.warn('Google Places details fetch failed, falling back to mock reviews', status);
-                setReviews(mockReviews);
-              }
-            });
-          } catch (err) {
-            console.error('Error using Google Places service, using mock reviews', err);
-            setReviews(mockReviews);
-          }
-        })
-        .catch((err) => {
-          console.error('Failed to load Google Maps script, using mock reviews', err);
-          Promise.resolve().then(() => setReviews(mockReviews));
-        });
-    } else {
-      // schedule setState to avoid synchronous setState inside effect
-      Promise.resolve().then(() => setReviews(mockReviews));
-    }
+    setReviews(mockReviews);
   }, []);
 
   const nextReview = () => {
